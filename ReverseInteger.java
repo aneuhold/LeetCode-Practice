@@ -1,9 +1,11 @@
 class Solution {
   public static void main(String[] args) {
     Solution solution = new Solution();
-    System.out.println(solution.reverse(241));
+    System.out.println(solution.reverse(1534236469));
   }
   
+  //Line 34: java.lang.NumberFormatException: For input string: "9646324351"
+
   public int reverse(int x) {
 
     // Test if the value is negative
@@ -36,9 +38,14 @@ class Solution {
     // Convert the Char array into a String
     String returnString = new String(returnCharArr);
 
-    // Convert the string back to an integer. 
-    int returnInt = Integer.parseInt(returnString);
-
+    // Convert the string back to an integer. If it overflows, return 0. 
+    int returnInt;
+    try {
+      returnInt = Integer.parseInt(returnString);
+    } catch (Exception e) {
+      returnInt = 0;
+    }
+    
     return returnInt;
   }
 }
